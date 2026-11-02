@@ -4,8 +4,8 @@
   --muted: #7b7886;
   --accent: #e8486a;
   color-scheme: light;
-  --display: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', cursive;
-  --body: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', cursive;
+  --display: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE';
+  --body: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE';
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
