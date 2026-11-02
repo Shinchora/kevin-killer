@@ -18,7 +18,7 @@ vill-v has spent so much time to create a weapon that could kill the """"most po
     | M | modes (it changes how he falls and swings etc) |
     | esc / Q | quit |
 
-3. Q/A (schizophrenia) 
+## Q/A (schizophrenia) 
 
 Q: why are u doing this ? 
 A: for fun 
