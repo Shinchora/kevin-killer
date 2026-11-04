@@ -18,18 +18,4 @@ vill-v has spent so much time to create a weapon that could kill the """"most po
     | M | modes (it changes how he falls and swings etc) |
     | esc / Q | quit |
 
-## Q/A (schizophrenia) 
-
-Q: why are u doing this ? 
-A: for fun 
-
-Q: is it some fetish? 
-A: wow there hahaha im crazy but not this much (those who know) no i just joke
-
-Q: do u hate kevin? 
-A: https://m.hoyolab.com/#/accountCenter/postList?id=125061023 
-scroll down, conclude and you will have ur answer 
-
-Q: whats your geopolitical opinion of the state of our world?
-A: this isnt an interview
 
