@@ -39,7 +39,7 @@ function drawSplat(g,sp,al){
  g.fillStyle=pl.leaf;g.beginPath();g.ellipse(sp.r*.3,sp.r*.15,sp.r*.12,sp.r*.05,.8,0,7);g.fill();
  g.restore()}
 var AC=null,muted=false;
-var SPLA=new Audio('assets_2/tomato_splash.mp3');SPLA.preload='auto';
+var SPLA=new Audio('assets_2/tomato splash.mp3');SPLA.preload='auto';
 var SFX={};['break brick','pie splat'].forEach(function(n){var a=new Audio('assets_2/'+n+'.mp3');a.preload='auto';a.addEventListener('canplaythrough',function(){SFX[n]=a})});
 function play(n,vol,rate){var a=SFX[n];if(muted||!a)return false;try{var c=a.cloneNode();c.volume=vol;c.playbackRate=rate||1;var pr=c.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){return false}return true}
 function ac(){try{if(!AC){AC=new(window.AudioContext||window.webkitAudioContext)();}if(AC.state==='suspended')AC.resume()}catch(e){}return AC}
