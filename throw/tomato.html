@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>throw stuff at kevin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tomato.css">
+</head>
+<body>
+<header class="top">
+  <h1>throw stuff at kevin</h1>
+  <div class="btns">
+    <a class="btn" href="index.html" title="home (Esc / Q)">home</a>
+    <button id="sn" type="button" title="sound (M)">Sound: on</button>
+    <button id="rs" type="button" title="reset (R)">Reset</button>
+  </div>
+</header>
+<section class="hud">
+  <div class="stat"><span>hits</span><b id="h">0</b></div>
+  <div class="stat"><span>dodged</span><b id="d">0</b></div>
+  <div class="stat"><span>streak</span><b id="s">0</b></div>
+  <div class="stat"><span>best</span><b id="b">0</b></div>
+</section>
+<div class="picker" id="pk" role="group" aria-label="what to throw">
+  <button type="button" data-w="tomato">1 tomato</button>
+  <button type="button" data-w="pie">2 pie</button>
+  <button type="button" data-w="brick">3 brick</button>
+  <button type="button" data-w="knife">4 knife</button>
+  <button type="button" data-w="random">5 random</button>
+</div>
+<main class="stage">
+  <canvas id="c" width="600" height="800" role="img" aria-label="Kevin behind a ledge dodging tomatoes you throw at him"></canvas>
+</main>
+<p class="hint">click or tap to throw. pick your weapon with 1-5. he dodges at random (not always lol). r reset, m sound, d dark mode, esc back home.</p>
+<script src="tomato.js"></script>
+</body>
+</html>

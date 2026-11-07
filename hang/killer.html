@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>most successful kevin killer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header class="top">
+  <h1>THE most successful kevin killer</h1>
+  <div class="btns">
+    <a class="btn" href="index.html" title="home (Esc / Q)">home</a>
+    <button id="mode" type="button" title="switch mode (M)">mode: hoist</button>
+    <button id="reset" type="button" title="reset (R)">Reset</button>
+  </div>
+</header>
+<section class="hud">
+  <div class="stat"><span>height</span><b><span id="vH">0.0</span><small> m</small></b></div>
+  <div class="stat"><span>lifts</span><b id="vL">0</b></div>
+  <div class="stat"><span>time</span><b><span id="vT">-</span><small> s</small></b></div>
+  <div class="stat"><span>best</span><b><span id="vB">-</span><small> s</small></b></div>
+</section>
+<div class="bar"><label for="stamTrack">stamina</label><div class="track" id="stamTrack"><div class="fill" id="stam"></div></div></div>
+<main class="stage">
+  <canvas id="c" width="600" height="800" role="img" aria-label="A girl hauls a boy up on a rope through a ceiling pulley while you hold down the mouse button"></canvas>
+</main>
+<p class="hint">hold the mouse or space to pull / let go and the rope slips. drag that ugly boy to swing him around so he suffers more. press m to change mode, r to reset, d for dark mode. yeah useful...</p>
+<script src="killer.js"></script>
+</body>
+</html>

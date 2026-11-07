@@ -1,0 +1,12 @@
+/* tomato game only (the rest comes from style.css) */
+:root { --wall: #efe9df; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --wall: #262932; } }
+:root[data-theme="dark"] { --wall: #262932; }
+.stage canvas {
+  cursor: crosshair;
+  max-width: 100%; max-height: 100%;
+  border: 2.5px solid var(--ink); border-radius: 10px;
+}
+
+.picker { display: flex; flex-wrap: wrap; gap: 8px; }
+.picker button.on { background: var(--ink); color: var(--paper); }
