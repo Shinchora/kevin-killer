@@ -1,21 +1,17 @@
-# guess who's the REAL kevin killer
+# kevin killer
 
-vill-v has spent so much time to create a weapon that could kill the """"most powerful "human" on earth""" but all she has to do is to call MEI, and kevin dies much easily thanks to the method of hanging ! !! thank you mama MEI  (saying bullshi)
+a little pile of games where you just kill him ig
 
-## how to play
+## pages
 
-1. you know nothing about playing this game
+2 games for now 
 
-2. theres no goal actually and ill surely put more stuff idk
+## keys
 
-2. 
-    | input | action |
-    | --- | --- |
-    | hold mouse / space / down | pull the rope |
-    | drag the boy | swing him around lol|
-    | R | reset |
-    | D | toggle dark mode |
-    | M | modes (it changes how he falls and swings etc) |
-    | esc / Q | quit |
-
-
+| key | action |
+| --- | --- |
+| R | reset (both games) |
+| D | dark mode |
+| M | rope game: mode, tomato game: sound on/off |
+| 1-5 | tomato game: pick tomato / pie / brick / knife / random |
+| Esc / Q | back to the home page |
