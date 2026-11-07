@@ -1,4 +1,4 @@
-/* home page only (the rest comes from style.css) */
+
 body { align-items: center; overflow-y: auto; height: auto; min-height: 100%; gap: 18px; padding-top: 28px; }
 .home { width: min(100%, 900px); display: flex; flex-direction: column; gap: 18px; }
 .home header { text-align: center; }
