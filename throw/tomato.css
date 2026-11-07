@@ -1,4 +1,4 @@
-/* tomato game only (the rest comes from style.css) */
+/* r u lurkking*/
 :root { --wall: #efe9df; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --wall: #262932; } }
 :root[data-theme="dark"] { --wall: #262932; }
