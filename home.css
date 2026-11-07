@@ -1,0 +1,23 @@
+/* home page only (the rest comes from style.css) */
+body { align-items: center; overflow-y: auto; height: auto; min-height: 100%; gap: 18px; padding-top: 28px; }
+.home { width: min(100%, 900px); display: flex; flex-direction: column; gap: 18px; }
+.home header { text-align: center; }
+.home h1 { font-size: clamp(26px, 7vw, 46px); }
+.home .sub { margin: 6px 0 0; color: var(--muted); font-size: 17px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.card {
+  display: flex; flex-direction: column; gap: 8px; padding: 14px;
+  color: var(--ink); text-decoration: none; background: var(--paper);
+  border: 2.5px solid var(--ink); border-radius: 14px 9px 15px 9px / 9px 15px 9px 14px;
+  transition: transform .12s, box-shadow .12s;
+}
+a.card:hover, a.card:focus-visible { transform: translate(-3px, -3px) rotate(-.4deg); box-shadow: 5px 5px 0 var(--accent); outline: none; }
+.card .thumb { height: 190px; display: flex; align-items: center; justify-content: center; }
+.card .thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.card h2 { margin: 0; font: 700 22px/1.1 var(--display); }
+.card p { margin: 0; color: var(--muted); font-size: 15px; flex: 1; }
+.card .go { font-weight: 700; color: var(--accent); }
+.card.soon { border-style: dashed; opacity: .65; justify-content: center; text-align: center; }
+.card.soon .thumb { font-size: 56px; }
+.foot { text-align: center; color: var(--muted); font-size: 14px; }
+.foot a { color: inherit; }
