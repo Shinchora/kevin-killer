@@ -12,5 +12,3 @@ theres 3 games but idk honestly dont take naything seriouslyh
 | M | rope game: mode, tomato game: sound on/off |
 | 1-5 | tomato game: pick tomato / pie / brick / gun / random |
 | Esc / Q | back to the home page |
-
-the rope game's controls (hold mouse / space / down to pull, drag the boy) are unchanged.
