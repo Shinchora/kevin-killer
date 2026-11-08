@@ -35,19 +35,7 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
   function wrap(a) { return ((a + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI; }
 
   
-  var SPR = {}, NAMES = Object.keys(MAN).concat(['pulley_wheel', 'pulley_mount', 'boy_face_confused', 'boy_headdead']);
-  
-  function trimBox(im) {
-    try {
-      var c = document.createElement('canvas'), w = c.width = im.naturalWidth || im.width, h = c.height = im.naturalHeight || im.height;
-      var x = c.getContext('2d'); x.drawImage(im, 0, 0);
-      var d = x.getImageData(0, 0, w, h).data, x0 = w, y0 = h, x1 = -1, y1 = -1, i, j;
-      for (j = 0; j < h; j++) for (i = 0; i < w; i++) if (d[(j * w + i) * 4 + 3] > 10) {
-        if (i < x0) x0 = i; if (i > x1) x1 = i; if (j < y0) y0 = j; if (j > y1) y1 = j;
-      }
-      return x1 < 0 ? null : [x0, y0, x1 - x0 + 1, y1 - y0 + 1];
-    } catch (e) { return null; }
-  }
+  var SPR = {}, NAMES = Object.keys(MAN).concat(['pulley_wheel', 'pulley_mount', 'boy_headdead']);
   function loadAll(done) {
     var left = NAMES.length;
     NAMES.forEach(function (n) {
@@ -56,12 +44,6 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
       im.onload = function () {
         var m = MAN[n];
         SPR[n] = { img: im, x: m ? m[0] : 0, y: m ? m[1] : 0, w: m ? m[2] : im.width, h: m ? m[3] : im.height };
-        if (n === 'boy_face_confused') {   /* ts pmo */
-          
-          var fm = MAN.boy_face_scared, cr = trimBox(im) || [416, 248, 183, 126];
-          SPR[n].crop = cr;
-          SPR[n].x = fm[0]; SPR[n].y = fm[1]; SPR[n].w = fm[2]; SPR[n].h = Math.round(fm[2] * cr[3] / cr[2]);
-        }
         if (n === 'boy_loop') {
           var lw = LOOP_W, lh = Math.round(LOOP_W * im.height / im.width);
           SPR[n].x = LOOP_CX - lw / 2; SPR[n].y = LOOP_CY - lh / 2; SPR[n].w = lw; SPR[n].h = lh;
@@ -560,7 +542,7 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
   function kevinFace() {
     if (onGround()) {
       var hurt = st.lifts >= CONFUSED_AFTER || (mode === 3 && st.slammed);   
-      return (hurt && SPR.boy_face_confused) ? 'boy_face_confused' : 'boy_face_love';
+      return hurt ? 'boy_face_scared' : 'boy_face_love';
     }
     return st.dizzy > 0 ? 'boy_face_dizzy' : 'boy_face_scared';
   }
