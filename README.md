@@ -8,7 +8,7 @@ a little pile of games where kevin has a bad day.
 
 | key | action |
 | --- | --- |
-| R | reset (both games) |
+| R | reset (all games) |
 | D | dark mode |
 | M | rope game: mode, tomato game: sound on/off |
 | 1-5 | tomato game: pick tomato / pie / brick etc / random |
