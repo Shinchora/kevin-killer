@@ -1,3 +1,4 @@
+if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neue"');document.fonts.load('700 16px "Comic Neue"')}
 (function () {
   'use strict';
   var MAN = {"boy_loop": [384, 444, 66, 266], "boy_arm_l": [384, 444, 66, 266], "boy_arm_r": [595, 438, 75, 266], "boy_chest": [411, 383, 226, 266], "boy_coat_back": [381, 575, 292, 259], "boy_coat_l": [378, 586, 90, 334], "boy_coat_r": [594, 583, 87, 332], "boy_face_dizzy": [407, 248, 201, 138], "boy_face_love": [401, 254, 210, 141], "boy_face_scared": [407, 248, 201, 140], "boy_hair_ahoge": [327, 6, 207, 133], "boy_hair_front": [291, 49, 422, 333], "boy_head": [363, 63, 314, 347], "boy_leg_l": [415, 612, 115, 376], "boy_leg_r": [522, 612, 118, 371], "face_blink": [457, 271, 231, 146], "face_effort": [461, 286, 228, 144], "face_idle": [446, 271, 250, 146], "face_joy": [455, 263, 231, 161], "puller_arm_lower": [622, 543, 116, 185], "puller_arm_rest": [408, 482, 109, 283], "puller_arm_upper": [606, 471, 66, 116], "puller_body": [383, 441, 383, 524], "puller_glasses": [455, 281, 262, 127], "puller_hair_back": [159, 96, 633, 765], "puller_hair_front": [320, 63, 437, 470], "puller_head": [351, 89, 361, 368]};
@@ -455,7 +456,7 @@
     var rx = 542, step = PXM / 2;   /* a tick every 0.5 m */
     ctx.strokeStyle = C.muted; ctx.fillStyle = C.muted; ctx.lineWidth = 2; ctx.lineCap = 'round';
     ctx.beginPath(); ctx.moveTo(rx, GROUND); ctx.lineTo(rx, GROUND - 6 * step); ctx.stroke();
-    ctx.font = '15px "Comic Sans MS", "Comic Sans", cursive';
+    ctx.font = '15px "Comic Sans MS","Comic Sans","Comic Neue",sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     for (var m = 0; m <= 6; m++) {
       var y = GROUND - m * step;
@@ -593,20 +594,20 @@
       } else if (f.k === 'pop') {
         var a = Math.min(1, (f.life - f.t) / 0.6), y = 330 - f.t * 18;
         ctx.globalAlpha = a; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillStyle = C.accent; ctx.font = 'bold 36px "Comic Sans MS", "Comic Sans", cursive';
+        ctx.fillStyle = C.accent; ctx.font = 'bold 36px "Comic Sans MS","Comic Sans","Comic Neue",sans-serif';
         ctx.fillText(f.a, 290, y);
-        ctx.fillStyle = C.ink; ctx.font = '20px "Comic Sans MS", "Comic Sans", cursive';
+        ctx.fillStyle = C.ink; ctx.font = '20px "Comic Sans MS","Comic Sans","Comic Neue",sans-serif';
         ctx.fillText(f.b, 290, y + 32);
         ctx.globalAlpha = 1;
       }
     });
-    ctx.fillStyle = C.muted; ctx.font = '14px "Comic Sans MS", "Comic Sans", cursive';
+    ctx.fillStyle = C.muted; ctx.font = '14px "Comic Sans MS","Comic Sans","Comic Neue",sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.fillText('mode: ' + MODES[mode] + ' [m]  -  ' + MODE_TIPS[mode], 10, GROUND + 28);
     if (!st.touched) {
       ctx.save(); ctx.translate(26, 400); ctx.rotate(-0.06);
       ctx.fillStyle = C.accent; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-      ctx.font = 'bold 36px "Comic Sans MS", "Comic Sans", cursive';
+      ctx.font = 'bold 36px "Comic Sans MS","Comic Sans","Comic Neue",sans-serif';
       ctx.fillText('hold to pull', 0, 0);
       ctx.restore();
     }

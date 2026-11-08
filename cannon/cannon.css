@@ -1,4 +1,6 @@
-:root{--paper:#fbfaf8;--ink:#1d1b24;--muted:#7b7886;--accent:#e8486a;color-scheme:light;--display:'Comic Sans MS','Comic Sans','Chalkboard SE',cursive;--body:'Comic Sans MS','Comic Sans','Chalkboard SE',cursive;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@font-face{font-family:'Comic Neue';font-weight:400;font-style:normal;font-display:swap;src:url('../fonts/comic-neue-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Comic Neue';font-weight:700;font-style:normal;font-display:swap;src:url('../fonts/comic-neue-latin-700-normal.woff2') format('woff2')}
+:root{--paper:#fbfaf8;--ink:#1d1b24;--muted:#7b7886;--accent:#e8486a;color-scheme:light;--display:'Comic Sans MS','Comic Sans','Comic Neue','Chalkboard SE',sans-serif;--body:'Comic Sans MS','Comic Sans','Comic Neue','Chalkboard SE',sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#1a1c23;--ink:#f1eee6;--muted:#a09da9;--accent:#ff8aa2;color-scheme:dark}}
 :root[data-theme="dark"]{--paper:#1a1c23;--ink:#f1eee6;--muted:#a09da9;--accent:#ff8aa2;color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
