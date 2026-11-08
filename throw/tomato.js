@@ -75,11 +75,10 @@ function drawSplat(g,sp,al){
 }
  g.restore()}
 var AC=null,muted=false;
-var SPLA=new Audio('assets_2/tomato splash.mp3');SPLA.preload='auto';
-var SFX={};['break brick','pie splat','gunshot'].forEach(function(n){var a=new Audio('assets_2/'+n+'.mp3');a.preload='auto';a.addEventListener('canplaythrough',function(){SFX[n]=a})});
-function play(n,vol,rate){var a=SFX[n];if(muted||!a)return false;try{var c=a.cloneNode();c.volume=vol;c.playbackRate=rate||1;var pr=c.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){return false}return true}
+['tomato splash','break brick','pie splat','gunshot'].forEach(function(n){Sfx.load(n,'assets_2/'+n+'.mp3')});
+function play(n,vol,rate){if(muted)return false;return Sfx.play(n,vol,rate)}
 function ac(){try{if(!AC){AC=new(window.AudioContext||window.webkitAudioContext)();}if(AC.state==='suspended')AC.resume()}catch(e){}return AC}
-function snd(big,rate){if(muted||!AC)return;try{if(SPLA){var au=SPLA.cloneNode();au.volume=big?1:.55;au.playbackRate=(rate||1)*(big?1:1.2+Math.random()*.15);var pr=au.play();if(pr&&pr.catch)pr.catch(function(){});return}var t=AC.currentTime,len=Math.floor(AC.sampleRate*.28),buf=AC.createBuffer(1,len,AC.sampleRate),dat=buf.getChannelData(0),i;
+function snd(big,rate){if(muted||!AC)return;try{if(Sfx.play('tomato splash',big?1:.55,(rate||1)*(big?1:1.2+Math.random()*.15)))return;var t=AC.currentTime,len=Math.floor(AC.sampleRate*.28),buf=AC.createBuffer(1,len,AC.sampleRate),dat=buf.getChannelData(0),i;
  for(i=0;i<len;i++)dat[i]=(Math.random()*2-1)*Math.pow(1-i/len,2);
  var n=AC.createBufferSource(),f=AC.createBiquadFilter(),g=AC.createGain();n.buffer=buf;f.type='lowpass';f.frequency.setValueAtTime(big?2400:1400,t);f.frequency.exponentialRampToValueAtTime(300,t+.22);
  g.gain.setValueAtTime(big?.9:.45,t);g.gain.exponentialRampToValueAtTime(.001,t+.28);n.connect(f);f.connect(g);g.connect(AC.destination);n.start(t);
