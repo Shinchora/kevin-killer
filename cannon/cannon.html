@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>fire kevin out of a cannon</title>
+<link rel="stylesheet" href="cannon.css">
+</head>
+<body>
+<header class="top"><h1>fire kevin out of a cannon</h1><div class="btns"><button id="again" type="button" title="reset (R)">Reset</button></div></header>
+<section class="hud">
+<div class="stat"><span>distance</span><b><span id="vD">0.0</span><small> m</small></b></div>
+<div class="stat"><span>best</span><b><span id="vB">-</span><small> m</small></b></div>
+<div class="stat"><span>shots</span><b id="vS">0</b></div>
+<div class="stat"><span>last</span><b><span id="vL">-</span><small> m</small></b></div>
+</section>
+<div class="bar"><label for="pwT">power</label><div class="track" id="pwT"><div class="fill" id="pw"></div></div></div>
+<main class="stage"><canvas id="c" width="960" height="540" role="img" aria-label="Mei lights the slow match and fires Kevin out of a cannon; drag back to aim and let go to fire"></canvas></main>
+<p class="hint">drag back to aim, let go and MEI lights the slow match. farther drag = more power. walls and birds show up at random. r to reset, d for dark mode. kevin did consent (questionable)</p>
+<script src="cannon.js"></script>
+</body>
+</html>
