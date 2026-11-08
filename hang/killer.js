@@ -8,7 +8,7 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
   var GRAV = 1900, DT = 1 / 480, ITER = 10, DAMP = 0.9996, PXM = 180;   
   var PUL = { x: 400, y: 147 }, WR = 26, MS = 0.5;
   var LEFT = { x: PUL.x - WR, y: PUL.y }, RIGHT = { x: PUL.x + WR, y: PUL.y };
-  var SLOPE = 0.305, ROPEK = Math.hypot(1, SLOPE), YH = 535, YL = 640;
+  var SLOPE = 0.285, ROPEK = Math.hypot(1, SLOPE), YH = 535, YL = 645;
   var NSEG = 18;
   var BTOP = -70, BBOT = 990, BX0 = 372, BX1 = 672, BCX = 522;
   var LEN_REST = (GROUND - (BBOT - BTOP) * K) - RIGHT.y, LEN_MIN = 62, LEN_MAX = LEN_REST + 34;
