@@ -25,8 +25,8 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
   var BUNGEE_LEN = LEN_REST - 45, BUNGEE_STIFF = 0.09, BOUNCE = 0.45;
   var SPIN_ACC = 5200, SLAM_SPEED = 450;
   var CONFUSED_AFTER = 3;  
-  var DEAD_AFTER = 6;   /* lifts that fully darken his head */
-  var DEAD_PULL = 30;   /* seconds of pulling that fully darken his head */
+  var DEAD_AFTER = 6;   
+  var DEAD_PULL = 30;   
   var mode = 0, spinOn = false, shx = 0, shy = 0;
 
   var reduceMotion = false;
@@ -44,9 +44,11 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
       im.onload = function () {
         var m = MAN[n];
         SPR[n] = { img: im, x: m ? m[0] : 0, y: m ? m[1] : 0, w: m ? m[2] : im.width, h: m ? m[3] : im.height };
-        if (n === 'boy_face_confused') {   /* same spot as the scared face; height follows your image's proportions */
-          var fm = MAN.boy_face_scared;
-          SPR[n].x = fm[0]; SPR[n].y = fm[1]; SPR[n].w = fm[2]; SPR[n].h = Math.round(fm[2] * im.height / im.width);
+        if (n === 'boy_face_confused') {   
+         
+          var fm = MAN.boy_face_scared, cr = [416, 248, 183, 126];
+          SPR[n].crop = cr;
+          SPR[n].x = fm[0]; SPR[n].y = fm[1]; SPR[n].w = fm[2]; SPR[n].h = Math.round(fm[2] * cr[3] / cr[2]);
         }
         if (n === 'boy_loop') {
           var lw = LOOP_W, lh = Math.round(LOOP_W * im.height / im.width);
@@ -409,7 +411,8 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
   function base() { ctx.setTransform(scale, 0, 0, scale, shx * scale, shy * scale); }
   function drawStatic(n, dx, dy) {
     var sp = SPR[n]; if (!sp) return;
-    ctx.drawImage(sp.img, sp.x + (dx || 0), sp.y + (dy || 0), sp.w, sp.h);
+    if (sp.crop) ctx.drawImage(sp.img, sp.crop[0], sp.crop[1], sp.crop[2], sp.crop[3], sp.x + (dx || 0), sp.y + (dy || 0), sp.w, sp.h);
+    else ctx.drawImage(sp.img, sp.x + (dx || 0), sp.y + (dy || 0), sp.w, sp.h);
   }
   function drawRot(n, J, a) {
     var sp = SPR[n]; if (!sp) return;
@@ -687,7 +690,7 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
     requestAnimationFrame(function (t0) { last = t0; frame(t0); });
   });
 })();
-/* esc / Q = back to the home page */
+
 window.addEventListener('keydown', function (e) {
   var k = e.key.toLowerCase();
   if (k === 'escape' || k === 'q') location.href = 'index.html';
