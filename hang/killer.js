@@ -24,9 +24,11 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
   var POP_TIPS = ['kill him more', 'torture', 'keep spinning him', 'let go to slam him hard'];
   var BUNGEE_LEN = LEN_REST - 45, BUNGEE_STIFF = 0.09, BOUNCE = 0.45;
   var SPIN_ACC = 5200, SLAM_SPEED = 450;
-  var CONFUSED_AFTER = 3;  
-  var DEAD_AFTER = 6;   
-  var DEAD_PULL = 30;   
+  var CONFUSED_AFTER = 3;
+  var CONFUSED_DEAD = 0.5;   /* head darkness (0-1) at which the confused face shows on the ground, same as 3 lifts */
+  var DEAD_AFTER = 6;   /* lifts that fully darken his head */
+  var DEAD_PULL = 30;   /* seconds of pulling that fully darken his head */
+  var DEAD_FACE_AT = 0.5;   /* once the dark head is this far faded in (0..1), his face becomes X-X for good */
   var mode = 0, spinOn = false, shx = 0, shy = 0;
 
   var reduceMotion = false;
@@ -35,19 +37,7 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
   function wrap(a) { return ((a + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI; }
 
   
-  var SPR = {}, NAMES = Object.keys(MAN).concat(['pulley_wheel', 'pulley_mount', 'boy_face_confused', 'boy_headdead']);
-  /* finds the visible (non-transparent) patch of an image as [x,y,w,h], so the crop never depends on the canvas size */
-  function trimBox(im) {
-    try {
-      var c = document.createElement('canvas'), w = c.width = im.naturalWidth || im.width, h = c.height = im.naturalHeight || im.height;
-      var x = c.getContext('2d'); x.drawImage(im, 0, 0);
-      var d = x.getImageData(0, 0, w, h).data, x0 = w, y0 = h, x1 = -1, y1 = -1, i, j;
-      for (j = 0; j < h; j++) for (i = 0; i < w; i++) if (d[(j * w + i) * 4 + 3] > 10) {
-        if (i < x0) x0 = i; if (i > x1) x1 = i; if (j < y0) y0 = j; if (j > y1) y1 = j;
-      }
-      return x1 < 0 ? null : [x0, y0, x1 - x0 + 1, y1 - y0 + 1];
-    } catch (e) { return null; }
-  }
+  var SPR = {}, NAMES = Object.keys(MAN).concat(['pulley_wheel', 'pulley_mount', 'boy_headdead']);
   function loadAll(done) {
     var left = NAMES.length;
     NAMES.forEach(function (n) {
@@ -56,13 +46,6 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
       im.onload = function () {
         var m = MAN[n];
         SPR[n] = { img: im, x: m ? m[0] : 0, y: m ? m[1] : 0, w: m ? m[2] : im.width, h: m ? m[3] : im.height };
-        if (n === 'boy_face_confused') {   /* same spot as the scared face */
-          /* the png is a 1024x1024 canvas with the face only in a small patch: crop to that patch [sx,sy,sw,sh]
-             so it fills the same slot as the other faces (otherwise it looks tiny) */
-          var fm = MAN.boy_face_scared, cr = trimBox(im) || [416, 248, 183, 126];
-          SPR[n].crop = cr;
-          SPR[n].x = fm[0]; SPR[n].y = fm[1]; SPR[n].w = fm[2]; SPR[n].h = Math.round(fm[2] * cr[3] / cr[2]);
-        }
         if (n === 'boy_loop') {
           var lw = LOOP_W, lh = Math.round(LOOP_W * im.height / im.width);
           SPR[n].x = LOOP_CX - lw / 2; SPR[n].y = LOOP_CY - lh / 2; SPR[n].w = lw; SPR[n].h = lh;
@@ -559,9 +542,10 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
 
   /* the kevin */
   function kevinFace() {
+    if (st.dead > DEAD_FACE_AT && SPR.boy_face_scared) return 'boy_face_scared';   /* dead = X-X */
     if (onGround()) {
-      var hurt = st.lifts >= CONFUSED_AFTER || (mode === 3 && st.slammed);   
-      return (hurt && SPR.boy_face_confused) ? 'boy_face_confused' : 'boy_face_love';
+      var hurt = st.lifts >= CONFUSED_AFTER || st.dead >= CONFUSED_DEAD || (mode === 3 && st.slammed);   
+      return hurt ? 'boy_face_scared' : 'boy_face_love';
     }
     return st.dizzy > 0 ? 'boy_face_dizzy' : 'boy_face_scared';
   }
@@ -703,7 +687,7 @@ if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neu
     requestAnimationFrame(function (t0) { last = t0; frame(t0); });
   });
 })();
-
+/* esc / Q = back to the home page */
 window.addEventListener('keydown', function (e) {
   var k = e.key.toLowerCase();
   if (k === 'escape' || k === 'q') location.href = 'index.html';
