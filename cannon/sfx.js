@@ -1,5 +1,4 @@
-// Tiny Web Audio sound helper (works on iOS Safari, unlike new Audio().play() outside a tap).
-// Usage: Sfx.load('boom','assets/boom.mp3');  Sfx.play('boom', volume, playbackRate);
+
 (function(){
   var C=null,buf={};
   function ctx(){
@@ -10,12 +9,12 @@
     var c=ctx();if(!c)return;
     fetch(encodeURI(url)).then(function(r){return r.arrayBuffer()}).then(function(ab){
       return new Promise(function(res,rej){
-        var p=c.decodeAudioData(ab,res,rej); // callback form for old Safari, promise form for new
+        var p=c.decodeAudioData(ab,res,rej); 
         if(p&&p.then)p.then(res,rej);
       });
     }).then(function(b){buf[name]=b}).catch(function(e){console.log('sfx load failed:',name,e)});
   }
-  // iOS only lets audio start after a tap: resume the context + play a silent blip on every touch
+
   function unlock(){
     var c=ctx();if(!c)return;
     if(c.state!=='running')c.resume();
