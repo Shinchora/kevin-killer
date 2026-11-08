@@ -33,14 +33,11 @@ const DATA={
  "cannon": "assets/cannon.png"
 };
 
-const winSound=new Audio("assets/win.mp3");
-winSound.volume = 0.8;
-const cannonSound = new Audio("assets/cannon.mp3");
-cannonSound.volume = 0.8;
+Sfx.load("win","assets/win.mp3");
+Sfx.load("cannon","assets/cannon.mp3");
 const MAN={boy_face_confused:[407,248,201,138],puller_arm_upper:[606,471,66,116],puller_arm_lower:[622,543,116,185],puller_arm_rest:[408,482,109,283],boy_arm_l:[384,444,66,266],boy_arm_r:[595,438,75,266],boy_chest:[411,383,226,266],boy_face_dizzy:[407,248,201,138],boy_face_scared:[407,248,201,140],boy_hair_ahoge:[327,6,207,133],boy_hair_front:[291,49,422,333],boy_head:[363,63,314,347],boy_leg_l:[415,612,115,376],boy_leg_r:[522,612,118,371],face_blink:[457,271,231,146],face_effort:[461,286,228,144],face_idle:[446,271,250,146],face_joy:[455,263,231,161],puller_body:[383,441,383,524],puller_glasses:[455,281,262,127],puller_hair_back:[159,96,633,765],puller_hair_front:[320,63,437,470],puller_head:[351,89,361,368]};
 const W=960,H=540,GY=450,CX=260,PY=GY-62,BAR=90.4,K=.2,MK=.17,PXM=30,Z=.75;
 const HK=.2;
-// omaagaadddd
 const HEAD_R=26*HK/K;
 let G=1400/3600,cond=[],pad=null,walls=[],birds=[],fx=[];
 let INK='#1d1b24',PAPER='#fbfaf8',MUTE='#7b7886',ACC='#e8486a',lt=0,stiff=0,shots=0,lastS=null,armP=0;
@@ -56,8 +53,7 @@ const LINES=['you got this!','fire it!!','go go go!','harder!!','I believe in yo
 const ptsInit=[0,1,2,3,4,5,6];
 const EX=[[5,6,5,1],[1,5,114,1],[1,6,114,1]],C=[[0,1,33,1],[1,2,44,1],[3,1,48,1],[4,1,48,1],[5,2,72,1],[6,2,72,1],[0,2,70,2],[3,4,50,2],[5,6,30,2]];
 function boom(){
-cannonSound.currentTime = 0;
-cannonSound.play().catch(err => console.log(err));}
+Sfx.play("cannon",0.8);}
 const dirv=()=>({x:Math.cos(ang),y:-Math.sin(ang)});
 const muz=()=>{const d=dirv();return{x:d.x*BAR,y:PY+d.y*BAR}};
 function spr(n,ox,oy,k){const m=MAN[n];ctx.drawImage(IM[n],ox+m[0]*k,oy+m[1]*k,m[2]*k,m[3]*k)}
@@ -152,9 +148,8 @@ function finish() {
   }
   if (score >= 20) {
     setTimeout(() => {
-      winSound.currentTime = 0;
-      winSound.play().catch(err => console.log(err));
-    }, 500);
+      Sfx.play("win",0.8);
+    }, 700);
   }
 }
 
