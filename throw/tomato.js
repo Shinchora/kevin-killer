@@ -1,3 +1,4 @@
+if(document.fonts&&document.fonts.load){document.fonts.load('400 16px "Comic Neue"');document.fonts.load('700 16px "Comic Neue"')}
 
 (function(){
 var A='assets_2/',F=function(n){return[A+n+'.png',0,0,1024,1023]};
