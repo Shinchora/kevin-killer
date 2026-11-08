@@ -39,10 +39,8 @@ const cannonSound = new Audio("assets/cannon.mp3");
 cannonSound.volume = 0.8;
 const MAN={boy_face_confused:[407,248,201,138],puller_arm_upper:[606,471,66,116],puller_arm_lower:[622,543,116,185],puller_arm_rest:[408,482,109,283],boy_arm_l:[384,444,66,266],boy_arm_r:[595,438,75,266],boy_chest:[411,383,226,266],boy_face_dizzy:[407,248,201,138],boy_face_scared:[407,248,201,140],boy_hair_ahoge:[327,6,207,133],boy_hair_front:[291,49,422,333],boy_head:[363,63,314,347],boy_leg_l:[415,612,115,376],boy_leg_r:[522,612,118,371],face_blink:[457,271,231,146],face_effort:[461,286,228,144],face_idle:[446,271,250,146],face_joy:[455,263,231,161],puller_body:[383,441,383,524],puller_glasses:[455,281,262,127],puller_hair_back:[159,96,633,765],puller_hair_front:[320,63,437,470],puller_head:[351,89,361,368]};
 const W=960,H=540,GY=450,CX=260,PY=GY-62,BAR=90.4,K=.2,MK=.17,PXM=30,Z=.75;
-// HEAD SCALE: Kevin's head (head + hair + face + ahoge). Body/limbs still use K.
-// Tweak this to taste (.2 = original size, .3 = ~50% bigger)
 const HK=.2;
-// Ragdoll head physics radius, scaled to match the bigger head
+// omaagaadddd
 const HEAD_R=26*HK/K;
 let G=1400/3600,cond=[],pad=null,walls=[],birds=[],fx=[];
 let INK='#1d1b24',PAPER='#fbfaf8',MUTE='#7b7886',ACC='#e8486a',lt=0,stiff=0,shots=0,lastS=null,armP=0;
@@ -50,8 +48,6 @@ function theme(){const c=getComputedStyle(document.documentElement),g=n=>c.getPr
 function shadow(x,w,y){ctx.save();ctx.globalAlpha=.12;ctx.fillStyle=INK;ctx.beginPath();ctx.ellipse(x,(y||GY)+4,w,7,0,0,7);ctx.fill();ctx.restore()}
 const CAN={"w": 378, "h": 333, "px": 178.71391805641343, "py": 182.91172700525348, "al": 0.5533145436260666, "dm": 215.26228096069735, "sx": 56.0, "sy": 96.0, "sc": 0.42};
 const IM={},cv=document.getElementById('c'),ctx=cv.getContext('2d');
-// RENDER SCALE: canvas backing store is W*S x H*S so it stays sharp when shown bigger.
-// Game logic still runs in 960x540 coordinates. Use 2 for big screens, 3 for 4K.
 const S=2;cv.width=W*S;cv.height=H*S;
 const $=id=>document.getElementById(id);
 let phase='aim',cam={x:0,y:0},ang=Math.PI/4,pow=0,drag=null,rag=null,t=0,shake=0,flash=0,smoke=[],best=0,landed=0,still=0,dizzy=false,resT=0,score=0,vT=0,bub='you got this!',bubT=0,AC;
@@ -66,9 +62,6 @@ const dirv=()=>({x:Math.cos(ang),y:-Math.sin(ang)});
 const muz=()=>{const d=dirv();return{x:d.x*BAR,y:PY+d.y*BAR}};
 function spr(n,ox,oy,k){const m=MAN[n];ctx.drawImage(IM[n],ox+m[0]*k,oy+m[1]*k,m[2]*k,m[3]*k)}
 
-// s = optional head scale (defaults to HK)
-// boy_face_confused.png is a 256x256 canvas where the face only fills a small patch,
-// so we crop to that patch [sx,sy,sw,sh] to make it fill its slot like the other faces.
 const FACE_CROP={boy_face_confused:[102,60,50,36]};
 function kHead(face,x,y,rot,s){
   s=s||HK;
@@ -161,7 +154,7 @@ function finish() {
     setTimeout(() => {
       winSound.currentTime = 0;
       winSound.play().catch(err => console.log(err));
-    }, 1000);
+    }, 500);
   }
 }
 
